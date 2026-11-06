@@ -1,0 +1,1 @@
+export default function Home(){return <main style={{fontFamily:"system-ui",padding:32,maxWidth:720,margin:"auto"}}><h1>Zekrny Quran Foundation API</h1><p>Backend proxy is running. Keep QF credentials in server environment variables only.</p><p>Health check: <a href="/api/quran/chapters">/api/quran/chapters</a></p></main>}
