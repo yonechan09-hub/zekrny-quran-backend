@@ -6,5 +6,5 @@ export async function GET(_req: Request, ctx: { params: Promise<{page:string}> }
  const verses:any[] = await qf.content.v4.verses.byPage(n as any, { fields: { textUthmani: true }, perPage: 50 } as any);
  const rows=verses.map(v=>{const key=String(v.verseKey??"").split(":");return [Number(key[0]??v.chapterId??0),Number(v.verseNumberInChapter??key[1]??0),String(v.textUthmani??v.text??""),Number(v.pageNumber??n),Number(v.juzNumber??0),Number(v.hizbNumber??0),v.sajdah?1:0]});
  return NextResponse.json({rows},{headers:{"Cache-Control":"public, s-maxage=3600, stale-while-revalidate=86400"}});
- } catch(e:any){return NextResponse.json({error:"Quran Foundation request failed",detail:String(e?.message??e),{status:502});}
+ } catch(e:any){return NextResponse.json({error:"Quran Foundation request failed",detail:String(e?.message??e)},{status:502});}
 }
