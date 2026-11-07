@@ -15,8 +15,8 @@ export async function GET(req: Request, ctx: { params: Promise<{ page: string }>
 
     const verses: any[] = await qf.content.v4.verses.byPage(n as any, {
       words: true,
-      wordFields: { lineNumber: true, pageNumber: true, textQpcHafs: true, textUthmani: true },
-      mushaf: 5,
+      wordFields: { lineNumber: true, pageNumber: true, codeV1: true, textQpcHafs: true, textUthmani: true },
+      mushaf: 2,
       perPage: 50,
     } as any);
 
@@ -38,6 +38,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ page: string }>
           char_type_name: pick(w, "charTypeName", "char_type_name"),
           line_number: Number(pick(w, "lineNumber", "line_number") ?? 0),
           page_number: Number(pick(w, "pageNumber", "page_number") ?? n),
+          code_v1: pick(w, "codeV1", "code_v1"),
           text_qpc_hafs: pick(w, "textQpcHafs", "text_qpc_hafs"),
           text_uthmani: pick(w, "textUthmani", "text_uthmani"),
         })),
